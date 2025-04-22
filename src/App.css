@@ -1,38 +1,456 @@
-.App {
-  text-align: center;
+/* --- Global Styles & Resets --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Add smooth scrolling if using the #top anchor */
+html {
+    scroll-behavior: smooth;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+body {
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; /* Poppins preferred, with fallbacks */
+    background-color: #ffffff;
+    color: #333333; /* Dark grey for text */
+    line-height: 1.6;
+    font-size: 16px; /* Base font size */
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.2s ease-in-out;
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+/* --- Header Styles --- */
+.site-header {
+    background-color: #ffffff;
+    /* The slight shadow/border is very subtle, using a light border */
+    border-bottom: 1px solid #eeeeee;
+    position: sticky; /* Optional: makes header stick on scroll */
+    top: 0;
+    z-index: 100; /* Ensure header stays on top */
+    width: 100%;
+}
+
+.header-top {
+    background-color: #E63946; /* Exact Red from image */
+    color: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 5%; /* Adjusted padding to match visual spacing */
+    font-size: 0.85em; /* Slightly smaller font size */
+    font-weight: 500;
+}
+
+.social-media a {
+    color: #ffffff;
+    margin-left: 18px; /* Slightly more space */
+    font-size: 1.1em; /* Make placeholder icons slightly bigger */
+    font-weight: normal; /* Or use actual icons */
+}
+
+.social-media a:hover {
+    opacity: 0.85;
+}
+
+.header-main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 5%; /* Padding for main header section */
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+}
+
+.logo-link {
+    text-decoration: none; /* Ensure logo is not underlined */
+}
+
+.logo {
+    font-size: 1.9em; /* Adjusted size */
+    font-weight: 700;
+    color: #E63946; /* Red color */
+    letter-spacing: 0.5px; /* Subtle letter spacing */
+    margin-right: 20px; /* Space between logo and nav */
+}
+
+.main-nav {
+    flex-grow: 1; /* Allow nav to take available space */
+    display: flex;
+    justify-content: center; /* Center nav items */
+}
+
+.main-nav ul {
+    display: flex;
+    align-items: center;
+}
+
+.main-nav li {
+    margin: 0 20px; /* Horizontal spacing between nav items */
+}
+
+.main-nav a {
+    color: #333333;
+    font-weight: 500;
+    font-size: 0.95em;
+    padding-bottom: 6px; /* Space for underline */
+    position: relative;
+    white-space: nowrap; /* Prevent wrapping */
+}
+
+.main-nav a:hover,
+.main-nav a.active {
+    color: #E63946;
+}
+
+/* Red underline for active menu item */
+.main-nav a.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0px; /* Position underline correctly */
+    left: 0;
+    width: 100%;
+    height: 2.5px; /* Slightly thicker underline */
+    background-color: #E63946;
+    border-radius: 1px; /* Slightly rounded ends */
+}
+
+.dropdown-arrow {
+    font-size: 0.7em;
+    margin-left: 6px;
+    display: inline-block; /* Ensure vertical align works */
+    vertical-align: middle;
+    color: #555555; /* Slightly subdued arrow color */
+}
+
+/* --- Main Content: Menu Grid --- */
+.menu-container {
+    max-width: 1200px; /* Container width */
+    margin: 40px auto; /* Vertical and horizontal centering */
+    padding: 0 25px; /* Side padding */
+}
+
+.menu-grid {
+    display: grid;
+    /* Responsive columns: start with 3, adjust down */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px; /* Gap between cards */
+}
+
+.menu-category-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    aspect-ratio: 4 / 3; /* Maintain aspect ratio, adjust if needed */
+    min-height: 200px; /* Minimum height */
+    border-radius: 16px; /* More pronounced rounding */
+    background-color: #f0f0f0; /* Fallback color */
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s ease; /* Smoother transition, add shadow */
+    text-decoration: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); /* Subtle shadow */
+}
+
+.menu-category-card:hover {
+    transform: scale(1.04); /* Slightly larger scale on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Enhanced shadow on hover */
+}
+
+/* Optional: Add overlay for text contrast */
+.menu-category-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(transparent 60%, rgba(0,0,0,0.4)); /* Subtle bottom gradient */
+    border-radius: 16px; /* Match parent rounding */
+    z-index: 1;
+    pointer-events: none; /* Allow clicking through the overlay */
+}
+
+.category-name {
+    color: #ffffff;
+    font-size: clamp(1.5em, 4vw, 2em); /* Responsive font size */
+    font-weight: 700;
+    text-align: center;
+    padding: 15px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7); /* Stronger text shadow */
+    z-index: 2; /* Ensure text is above overlay */
+    position: relative; /* Needed for z-index */
+}
+
+/* --- Footer Styles --- */
+.site-footer-bottom {
+    background-color: #E63946;
+    color: #ffffff;
+    padding: 25px 0; /* More padding */
+    margin-top: 60px; /* More space above footer */
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 5%; /* Match header side padding */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9em;
+    flex-wrap: wrap; /* Allow wrapping */
+    gap: 15px; /* Add gap for wrapped items */
+}
+
+.copyright {
+    flex-shrink: 0; /* Prevent copyright from shrinking too much */
+}
+
+.footer-nav {
+    display: flex;
+    gap: 25px; /* Space between footer links */
+}
+
+.footer-nav a {
+    color: #ffffff;
+    font-weight: 500;
+}
+
+.footer-nav a:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+}
+
+.back-to-top {
+    display: inline-flex; /* Use flex for centering */
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+    width: 36px; /* Fixed size */
+    height: 36px; /* Fixed size */
+    border-radius: 5px;
+    font-size: 1.3em;
+    line-height: 1;
+    transition: background-color 0.2s ease;
+}
+
+.back-to-top:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* --- Responsive Adjustments --- */
+
+/* Tablet */
+@media (max-width: 992px) {
+    .header-main {
+        padding: 15px 3%; /* Reduce padding */
+    }
+    .main-nav {
+        justify-content: flex-end; /* Align nav right if logo takes space */
+        order: 3; /* Move nav below logo/lang on wrap */
+        width: 100%;
+        margin-top: 10px;
+        justify-content: center; /* Center again when wrapped */
+    }
+    .main-nav li {
+        margin: 0 15px;
+    }
+    .language-selector {
+        order: 2; /* Keep language selector somewhat right */
+        margin-left: auto; /* Push language selector right */
+    }
+    .logo {
+        order: 1;
+        margin-right: 0;
+    }
+
+    .menu-container {
+        padding: 0 20px;
+    }
+    .menu-grid {
+        /* Keep auto-fit, maybe adjust minmax */
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 25px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+    .header-top {
+        flex-direction: column;
+        text-align: center;
+        padding: 10px 5%;
+        gap: 5px;
+    }
+    .social-media {
+        margin-top: 8px;
+        margin-left: 0; /* Reset margin */
+    }
+    .social-media a {
+         margin: 0 10px; /* Adjust spacing */
+    }
+    .header-main {
+        flex-direction: column;
+        align-items: center; /* Center items vertically */
+        padding: 15px 5%;
+        gap: 15px; /* Add gap between wrapped items */
+    }
+    .main-nav {
+       order: 2; /* Nav below logo */
+       margin-top: 0;
+    }
+    .main-nav ul {
+       justify-content: center;
+    }
+     .language-selector {
+        order: 3; /* Language below nav */
+        margin-left: 0; /* Reset margin */
+    }
+    .logo {
+        order: 1; /* Logo first */
+        text-align: center;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px; /* Increase gap for stacked items */
+    }
+    .footer-nav {
+        order: 2;
+        gap: 20px;
+    }
+    .copyright {
+        order: 1;
+    }
+    .back-to-top {
+        order: 3;
+    }
+    .menu-container {
+        margin: 30px auto;
+        padding: 0 15px;
+    }
+    .menu-grid {
+        grid-template-columns: 1fr; /* Single column */
+        gap: 20px;
+    }
+    .menu-category-card {
+        aspect-ratio: 16 / 9; /* Wider aspect ratio for single column */
+    }
+}
+
+/* Popup Menu Styles */
+.popup-menu {
+  position: fixed;
+  top: 100px; /* Adjust to position below the header */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #ffffff;
+  border: 1px solid #dddddd;
+  border-radius: 5px;
+  padding: 10px 0;
+  list-style: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  min-width: 200px;
+}
+
+.popup-menu ul {
+  margin: 0;
+  padding: 0;
+}
+
+.popup-menu li {
+  padding: 10px 20px;
+}
+
+.popup-menu li a {
+  color: #333333;
+  text-decoration: none;
+  font-size: 0.95em;
+}
+
+.popup-menu li a:hover {
+  background-color: #f5f5f5;
+  color: #E63946;
+}
+
+/* Language Selector */
+.language-selector button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 1em;
+  color: #333333;
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  transition: color 0.2s ease;
 }
 
-.App-link {
-  color: #61dafb;
+.language-selector button:hover {
+  color: #E63946;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+
+
+/* General Button Styles */
+button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 1em;
+  font-weight: 500;
+  color: #333333;
+  padding: 10px 15px;
+  border-radius: 5px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+button:hover {
+  background-color: #f5f5f5;
+  color: #E63946;
+}
+
+button.active {
+  color: #E63946;
+  font-weight: 600;
+  border-bottom: 2px solid #E63946;
+}
+
+/* Language Selector Button */
+.language-selector button {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.95em;
+  color: #333333;
+  padding: 8px 12px;
+  border: 1px solid #dddddd;
+  border-radius: 5px;
+  background-color: #ffffff;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.language-selector button:hover {
+  background-color: #f5f5f5;
+  color: #E63946;
+}
+
+.language-selector button.active {
+  background-color: #E63946;
+  color: #ffffff;
+  border-color: #E63946;
 }
