@@ -39,6 +39,7 @@
     ]
   },
   "devDependencies": {
-    "@types/react": "^19.1.2"
+    "@types/react": "^19.1.2",
+    "@types/react-world-flags": "^1.6.0"
   }
 }
