@@ -10,7 +10,7 @@ const translations = {
       bolt: 'Bolt',
       aboutUsInfo: 'Somebody said there are TRANS people in bangkok, we don"t have trans fats here.',
       contactInfo: `Call Us: +995 574 07 75 18\nEmail: AtriaMagaria@atria.nk\nAddress: Shio Aragvispirelis qoronikonit qristes aqet 1521`,
-      copyright: '© None of the right reserved By Bangkok 2025 LP',
+      copyright: '© None of the right reserved By Vadgkok 2025 LP',
       backToTop: '▲',
     },
     geo: {
