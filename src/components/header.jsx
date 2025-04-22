@@ -15,7 +15,7 @@ function Header({ t, language, setLanguage, showDropdown, setShowDropdown }) {
       </div>
       <div className="header-main">
         <a href="/" className="logo-link">
-          <div className="logo">BANGKŌK</div>
+          <div className="logo">VADGKŌK</div>
         </a>
         <nav className="main-nav">
           <ul>

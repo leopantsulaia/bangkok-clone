@@ -10,7 +10,7 @@ const translations = {
       bolt: 'Bolt',
       aboutUsInfo: 'Somebody said there are TRANS people in bangkok, we don"t have trans fats here.',
       contactInfo: `Call Us: +995 574 07 75 18\nEmail: AtriaMagaria@atria.nk\nAddress: Shio Aragvispirelis qoronikonit qristes aqet 1521`,
-      copyright: '© All rights reserved. Bangkok 2025 By LP',
+      copyright: '© None of the right reserved By Bangkok 2025 LP',
       backToTop: '▲',
     },
     geo: {
@@ -24,7 +24,7 @@ const translations = {
       bolt: 'ბოლტი',
       aboutUsInfo: 'გავიზარდე ბანგკოკში, დავიბადე ბანგკოკში, ჯერ დავიბადე მერე გავიზარდე.',
       contactInfo: `დაგვირეკეთ: +995 574 07 75 18\nელ.ფოსტა: AtriaMagaria@atria.nk\nმისამართი: შიო არაგვისპირელის ყორონიკონით ქრისტეს აქეთ 1521`,
-      copyright: '© ყველა უფლება დაცულია. ბანგკოკი 2025 LP-ის მიერ',
+      copyright: '© არცერთი უფლება არაა დაცული ვადგკოკი 2025 LP-ის მიერ',
       backToTop: '▲',
     },
   };
